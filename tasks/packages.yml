@@ -1,0 +1,12 @@
+---
+- name: Install basic development package set.
+  apt:
+    name:
+      - build-essential
+      - clang
+      - cmake
+      - ninja-build
+      - libboost-dev
+      - libboost-system-dev
+      - libssl-dev
+...

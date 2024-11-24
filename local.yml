@@ -1,0 +1,22 @@
+---
+- hosts: localhost
+  connection: local
+  become: true
+
+  vars_files:
+    - default_vars.yml
+
+  pre_tasks:
+    - name: Identify user
+      debug:
+        msg: User actual "{{ user_actual }}"
+
+    - name: Update APT
+      apt:
+        upgrade: 'yes'
+        update_cache: true
+        cache_valid_time: 86400  # Only update once per 24 hours.
+
+  tasks:
+    - include: tasks/packages.yml
+...
